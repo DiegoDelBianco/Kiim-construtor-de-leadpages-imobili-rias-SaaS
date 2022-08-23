@@ -10,7 +10,7 @@ class SiteController extends Controller
 {
     public function home(){
         $urlParts = explode('.', $_SERVER['HTTP_HOST']);
-        $team = Team::where('sub_domain',$urlParts['0']) -> first();
+        $team = Team::where('sub_domain',$urlParts['0'])->first();
         $template = $team->site_template;
         return view('templates.'.$template->name.'.home')->with(['team' => $team]);
     }

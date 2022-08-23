@@ -54,7 +54,7 @@ return [
 
     'url' => env('APP_URL', 'https://kiim.com.br/'),
 
-    'domain' => env('APP_DOMAIN', 'kiim'),
+    'domain' => env('APP_DOMAIN', 'kiim.com.br'),
 
     'sub' => env('APP_SUB', 'http://<sub>.kiim.com.br'),
 
