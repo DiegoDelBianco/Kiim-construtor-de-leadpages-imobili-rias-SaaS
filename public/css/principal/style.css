@@ -1,0 +1,38 @@
+/** APP LAYOUT **/
+.body-app #top-logo{
+	height:55px
+}
+
+/* LIST OF TEAMS */
+.body-app .line-list-team{
+	background-color: #f0f0f0;
+	border-radius: 10px;
+	border-color: #eee;
+}
+
+/* LIST OF MEDIAS  */
+.body-app .list-medias .item-media{
+	background-color: #f0f0f0;
+	border-radius: 10px;
+	border-color: #eee;
+	text-align:center;
+}
+
+.body-app .list-medias .item-media img{
+	max-width:100%;
+}
+
+
+/** GUEST LAYOUT **/
+.body-guest #top-logo{
+	max-width:400px
+}
+
+
+
+
+
+/** SITE LAYOUT **/
+.body-site #top-logo{
+	max-width: 350px;
+}

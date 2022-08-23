@@ -1,0 +1,1 @@
+<img id="top-logo" src="{{asset('images/principal/brand/2c.png')}}" alt="">
