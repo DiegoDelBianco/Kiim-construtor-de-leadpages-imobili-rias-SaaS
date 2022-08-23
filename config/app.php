@@ -52,9 +52,9 @@ return [
     |
     */
 
-    'url' => env('APP_URL', 'http://localhost'),
+    'url' => env('APP_URL', 'https://kiim.com.br/'),
 
-    'domain' => env('APP_DOMAIN', 'localhost'),
+    'domain' => env('APP_DOMAIN', 'kiim'),
 
     'sub' => env('APP_SUB', 'http://<sub>.kiim.com.br'),
 
