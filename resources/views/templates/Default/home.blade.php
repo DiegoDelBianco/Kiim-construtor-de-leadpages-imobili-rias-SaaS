@@ -6,7 +6,6 @@
 		<link rel="profile" href="https://gmpg.org/xfn/11">
 
 		<title>{{ $team->name }}</title>
-		<meta name='robots' content='noindex, nofollow' />
 		<link rel='dns-prefetch' href='//fonts.googleapis.com' />
 		<link rel='dns-prefetch' href='//s.w.org' />
 

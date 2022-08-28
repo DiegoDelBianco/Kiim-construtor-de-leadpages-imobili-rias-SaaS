@@ -5,7 +5,6 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 		<title>{{ $template->var_value_or_default('title') }}</title>
-		<meta name='robots' content='noindex, nofollow' />
 
 		<link rel="stylesheet" id="real-estate-salient-Bitter-css" href="//fonts.googleapis.com/css?family=Bitter%3A400%2C400i%2C700&amp;ver=6.0.1" type="text/css" media="all">
 
