@@ -72,9 +72,18 @@
 
 		<div id="content-principal">
 			<div id="social-h">
-				<a href="#" target="_blank"><i class="fa-brands fa-facebook-f"></i></a>
-				<a href="#" target="_blank"><i class="fa-brands fa-instagram"></i></a>
-				<a href="#" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
+				@if($team->facebook != NULL)
+				<a href="{{ $team->facebook }}" target="_blank"><i class="fa-brands fa-facebook-f"></i></a>
+				@endif
+				@if($team->instagram != NULL)
+				<a href="{{ $team->instagram }}" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+				@endif
+				@if($team->youtube != NULL)
+				<a href="{{ $team->youtube }}" target="_blank"><i class="fa-brands fa-youtube"></i></a>
+				@endif
+				@if($team->whatsapp != NULL)
+				<a href="{{ $team->whatsapp }}" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
+				@endif
 			</div>
 			<h1>{{ $template->var_value_or_default('title')  }}</h1>
 			@if($property->sale)
@@ -115,7 +124,7 @@
 				@endforeach
 			</div>
 			<div class="cta">
-				<a href="#" class="btn btn-success"><i class="fa-brands fa-whatsapp"></i> {{ $template->var_value_or_default('cta')  }}</a>
+				<a href="{{ $team->whatsapp }}" class="btn btn-success"><i class="fa-brands fa-whatsapp"></i> {{ $template->var_value_or_default('cta')  }}</a>
 			</div>
 			<!--div class="cta">
 				<a href="#" class="btn btn-secondary"><i class="fa-solid fa-arrow-up-right-from-square"></i> Mais Imóveis</a>
