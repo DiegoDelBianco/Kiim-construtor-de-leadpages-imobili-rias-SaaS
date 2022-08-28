@@ -507,6 +507,29 @@
                             <label for="pets_no">Não.</label>
                         </div>
 
+
+
+
+                        <!-- ITENS -->
+                        <div class="row">
+                            <div class="col-md-12">
+                                <label for="">Escolha os itens que agregam essa residência</label>
+                            </div>
+                            @foreach($items as $item)
+                            <div class="col-md-3"> 
+                                <input 
+                                    type="checkbox" 
+                                    {{ old("tem_".$item->id) == 'on' ? 'checked' : '' }}
+                                    name="item_{{ $item->id }}" 
+                                    id="item_{{ $item->id }}" 
+                                    value="{{ $item->id }}"> 
+                                <label for="item_{{ $item->id }}"> <i class="{{ $item->awesome_class_icon }}"></i> {{$item->name}} </label>
+                            </div>
+                            @endforeach
+                        </div>
+
+
+
                         <div class="flex items-center justify-end mt-4">
 
                             <x-button class="ml-4">

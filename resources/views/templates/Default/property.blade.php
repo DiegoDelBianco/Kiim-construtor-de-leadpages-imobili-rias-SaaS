@@ -386,10 +386,12 @@
 										<li class="active">
 											<a data-toggle="tab" href="#ere-overview">Geral</a>
 										</li>
-										<!--li>
+										@if(count($property->items) > 0)
+										<li>
 											<a data-toggle="tab" href="#ere-features">Destaques</a>
 										</li>
-										<li>
+										@endif
+										<!--li>
 											<a data-toggle="tab" href="#ere-video">Video</a>
 										</li>
 										<li>
@@ -465,10 +467,13 @@
 										<!-- Tab Destaques -->
 										<div id="ere-features" class="tab-pane fade">
 											<div class="row">
+												@foreach($property->items as $item)
 												<div class="col-md-3 col-xs-6 col-mb-12 property-feature-wrap">
-													<a href="https://demo017.delbianco.emp.br/property-feature/air-conditioning/" class="feature-checked"><i class="fa fa-check-square-o"></i> Air Conditioning</a>
+													<p><i class=" {{ $item->awesome_class_icon }} "></i> {{$item->name}} </p>
 												</div>
-												<div class="col-md-3 col-xs-6 col-mb-12 property-feature-wrap">
+												@endforeach
+
+												<!--div class="col-md-3 col-xs-6 col-mb-12 property-feature-wrap">
 													<a href="https://demo017.delbianco.emp.br/property-feature/electric-range/" class="feature-checked"><i class="fa fa-check-square-o"></i> Electric Range</a>
 												</div>
 												<div class="col-md-3 col-xs-6 col-mb-12 property-feature-wrap">
@@ -491,7 +496,7 @@
 												</div>
 												<div class="col-md-3 col-xs-6 col-mb-12 property-feature-wrap">
 													<a href="https://demo017.delbianco.emp.br/property-feature/wifi/" class="feature-checked"><i class="fa fa-check-square-o"></i> WiFi</a>
-												</div>
+												</div-->
 											</div>                
 										</div>
 										<!-- Fecha Tab Destaques -->
@@ -955,6 +960,9 @@
 
 
 
+
+	    <!-- BRANDING DA KIIM PARA CLIENTES QUE NAO SAO PRO -->
+	    @include('templates.nopro')
 
 
 

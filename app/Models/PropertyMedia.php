@@ -13,6 +13,25 @@ class PropertyMedia extends Model
     protected $pathDir = '<size>/';
     protected $mediaName = 'p<property_id>m<media_id>-<media_name>.webp';
 
+    public function unlink_and_destroy(){
+
+        //se for a thumb remove
+        if($this->property->thumb_id == $this->id){
+            $this->property->thumb_id = NULL;
+            $this->property->save();
+        }
+
+        //apaga as imagens do servidor
+        if(file_exists($this->pathOriginal())) unlink($this->pathOriginal());
+        if(file_exists($this->path200())) unlink($this->path200());
+        if(file_exists($this->path400x225())) unlink($this->path400x225());
+        if(file_exists($this->path1200x675())) unlink($this->path1200x675());
+        if(file_exists($this->path800())) unlink($this->path800());
+
+        //apaga os registros
+        return $this->delete();
+
+    }
 
     private function get_path($team_id, $size, $property_id, $media_id, $media_name){
         $pathTeam = $this->pathTeamDir;

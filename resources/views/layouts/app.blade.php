@@ -25,7 +25,8 @@
         <script src="{{ asset('js/app.js') }}" defer></script>
 
         <!-- Font awesome -->
-        <script src="https://kit.fontawesome.com/3018d5f091.js" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="{{asset('fontawesome/css/all.min.css')}}">
+        <!--script src="{{asset('fontawesome/js/all.min.js')}}" crossorigin="anonymous"></script-->
         
     </head>
     <body class="font-sans antialiased body-app">
@@ -48,3 +49,11 @@
         </div>
     </body>
 </html>
+
+
+
+
+
+
+
+

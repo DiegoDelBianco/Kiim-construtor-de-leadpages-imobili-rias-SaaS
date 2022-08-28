@@ -26,6 +26,7 @@ class DatabaseSeeder extends Seeder
         ]);
         DB::table('site_templates')->insert([
             'name' => "Default",
+            'type' => "1",
         ]);
         DB::table('leadpage_templates')->insert([
             'name' => "Default",

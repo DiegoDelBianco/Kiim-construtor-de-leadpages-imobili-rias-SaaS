@@ -8,7 +8,10 @@ use App\Models\Team;
 use App\Models\Property;
 use App\Models\PropertyType;
 use App\Models\PropertyMedia;
+use App\Models\PropertyItem;
+use App\Models\PropertiesHasItems;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\DB;
 
 class PropertyController extends Controller
 {
@@ -20,6 +23,7 @@ class PropertyController extends Controller
      */
     public function index(Team $team)
     {
+        if(!$team->verify_permission(1, 2)) return false;
         return view('properties.list-property')->with(['team' => $team, 'properties' => $team->properties]);
     }
 
@@ -31,10 +35,13 @@ class PropertyController extends Controller
      */
     public function create(Team $team)
     {
+        if(!$team->verify_permission(3, 2)) return false;
+
         return view('properties.create-property')
             ->with([
                 'team' => $team, 
                 'properties' => $team->properties,
+                'items' => PropertyItem::all(),
                 'property_types' => PropertyType::all(),
             ]);
     }
@@ -48,6 +55,8 @@ class PropertyController extends Controller
      */
     public function store(Request $request, Team $team)
     {
+        if(!$team->verify_permission(3, 2)) return false;
+
         /*
          *   FALTA VALIDAR PERMISSÕES DO USUÀRIO SOBRE A SITE
          */
@@ -130,6 +139,19 @@ class PropertyController extends Controller
         ]);
 
 
+        $items = PropertyItem::all();
+        $propertieshasitem = array();
+        foreach($items as $item){
+
+            if(isset($_POST['item_'.$item->id])){
+                //Associa o item ao imóvel
+                $propertieshasitem[] = PropertiesHasItems::create([
+                    'property_id' => $property->id,
+                    'property_item_id' => $item->id,
+                ]);
+            }
+        }
+
         return redirect(route('dashboard.properties.list', $team->id));
     }
 
@@ -147,35 +169,143 @@ class PropertyController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\Team  $team
+     * @param  \App\Models\Property  $property
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Team $team, Property $property)
     {
-        //
+        if(!$property->team->verify_permission(2, 2)) return false;
+
+        $list_items = $property->items;
+
+        $itemsProperty = array();
+        foreach($list_items as $item) $itemsProperty[$item->id] = TRUE;
+
+        return view('properties.edit-property')
+            ->with([
+                'team' => $team, 
+                'properties' => $team->properties,
+                'property' => $property,
+                'items' => PropertyItem::all(),
+                'itemsProperty' => $itemsProperty,
+                'property_types' => PropertyType::all(),
+            ]);
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Models\Team  $team
+     * @param  \App\Models\Property  $property
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Team $team, Property $property)
     {
-        //
+        if(!$property->team->verify_permission(2, 2)) return false;
+
+        //Válida os dados do formulário
+        $request->validate([
+            'title' => ['nullable', 'string', 'min:0', 'max:255'],
+            'cod' => ['nullable', 'string', 'min:0', 'max:255'],
+            'cep' => ['required', 'string', 'min:0', 'max:255'],
+            'street' => ['required', 'string', 'min:0', 'max:255'],
+            'number_street' => ['nullable', 'string', 'min:0', 'max:255'],
+            'neighborhood' => ['required', 'string', 'min:0', 'max:255'],
+            'neighborhood_related' => ['nullable', 'string', 'min:0', 'max:255'],
+            'mapsLati' => ['nullable', 'string', 'min:0', 'max:255'],
+            'mapsLong' => ['nullable', 'string', 'min:0', 'max:255'],
+            'city' => ['required', 'string', 'min:0', 'max:255'],
+            'state' => ['required', 'string', 'min:0', 'max:255'],
+            'zone' => ['nullable', 'string', 'min:0', 'max:255'],
+            'property_type_id' => ['exists:property_types,id'],
+            'bedrooms' => ['nullable', 'integer'],
+            'suites' => ['nullable', 'integer'],
+            'm2' => ['nullable', 'integer'],
+            'm2built' => ['nullable', 'integer'],
+            'furnished' => ['nullable', 'boolean'],
+            'bathrooms' => ['nullable', 'integer'],
+            'parking' => ['nullable', 'integer'],
+            'rent' => ['nullable', 'boolean'],
+            'rent_price' => ['nullable', 'string', 'min:0', 'max:255'],
+            'sale' => ['nullable', 'boolean'],
+            'sale_price' => ['nullable', 'string', 'min:0', 'max:255'],
+            'rent_iptu' => ['nullable', 'string', 'min:0', 'max:255'],
+            'condominium_price' => ['nullable', 'string', 'min:0', 'max:255'],
+            'its_condominium' => ['nullable', 'boolean'],
+            'shared_house' => ['nullable', 'boolean'],
+            'description' => ['nullable', 'string', 'min:0', 'max:255'],
+            'building' => ['nullable', 'boolean'],
+            'end_build' => ['nullable', 'date', 'min:0', 'max:255'],
+            'exchange' => ['nullable', 'boolean'],
+            'status' => ['nullable', 'boolean'],
+            'pets' => ['nullable', 'boolean'],
+        ]);
+
+        //Salva
+        $saved = $property->update($request->all());
+
+
+
+        //remove os itens que estão salvos mas não foram selecionados
+        $items = $property->items;
+
+        foreach($items as $item){
+
+            if(!$request->has('item_'.$item->id)){
+                //remove o item
+
+                $deleted = DB::delete('DELETE FROM properties_has_items WHERE property_id ="'.$property->id.'" AND property_item_id="'.$item->id.'"');
+
+            }else{
+
+                //Caso exista o item e ele se mantem selecionado adiciona a array a baixo para verificar se precisa adicionar
+                $ItemExists[$item->id] = true;
+            }
+        }
+
+
+        //adiciona os itens que ainda nao foram inseridos
+        $items = PropertyItem::all();
+        $propertieshasitem = array();
+        foreach($items as $item){
+
+            if($request->has('item_'.$item->id) AND !isset($ItemExists[$item->id])){
+                //Associa o item ao imóvel
+                $propertieshasitem[] = PropertiesHasItems::create([
+                    'property_id' => $property->id,
+                    'property_item_id' => $item->id,
+                ]);
+            }
+        }
+
+
+        return redirect(route('dashboard.properties.list', $team->id));
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Models\Team  $team
+     * @param  \App\Models\Property  $property
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Team $team, Property $property)
     {
-        //
+        if(!$property->team->verify_permission(4, 2)) return false;
+
+        //apaga todas as mídias
+        $midias = $property->medias;
+        foreach($midias as $midia) $midia->unlink_and_destroy();
+
+        //apaga ligações com itens
+        $deleted = DB::delete('DELETE FROM properties_has_items WHERE property_id ="'.$property->id.'"');
+
+        //apaga o imóvel
+        $property->delete();
+
+        return redirect(route('dashboard.properties.list', $team->id));
     }
 
     /**
@@ -183,6 +313,9 @@ class PropertyController extends Controller
      * @param  \App\Models\Property  $property
      */
     public function media_index(Team $team, Property $property){
+
+        if(!$team->verify_permission(2, 2)) return false;
+
         return view('properties.list-media-property')
             ->with([
                 'team' => $team, 
@@ -201,6 +334,8 @@ class PropertyController extends Controller
      */
     public function media_store(Request $request, Team $team, Property $property)
     {
+        if(!$property->team->verify_permission(2, 2)) return false;
+
         $request->validate([
          'image' => 'required|image|mimes:jpg,png,jpeg,gif,svg,webp|max:2048',
         ]);
@@ -236,10 +371,31 @@ class PropertyController extends Controller
      */
     public function media_thumb(Request $request, Team $team, Property $property, PropertyMedia  $media)
     {
+        if(!$property->team->verify_permission(2, 2)) return false;
+
         if($media->property_id == $property->id){
             $property->thumb_id = $media->id;
             $property->save();
         }
+
+        return redirect(route('dashboard.properties.media.list', [$team->id, $property->id]));
+
+    }
+
+
+
+    /**
+     * @param  \App\Models\Team  $team
+     * @param  \App\Models\Property  $property
+     * @param  \App\Models\PropertyMedia  $media
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function media_destroy(Request $request, Team $team, Property $property, PropertyMedia  $media)
+    {
+        if(!$property->team->verify_permission(2, 2)) return false;
+
+        $media->unlink_and_destroy();
 
         return redirect(route('dashboard.properties.media.list', [$team->id, $property->id]));
 

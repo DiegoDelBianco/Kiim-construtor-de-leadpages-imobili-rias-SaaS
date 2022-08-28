@@ -86,7 +86,6 @@
 		</header>
 
 
-
 		<div class="container-fluid home-two-search">
 			<div class="row">
 				<div class="container">
@@ -104,109 +103,92 @@
 											<div class="row">
 												<div class="col-md-4 col-sm-6 col-xs-12 form-group">
 													<select name="type" title="Property Types" class="search-field form-control" data-default-value="">
-														<option value="apartamento">Apartamento</option><option value="apartment">Apartment</option><option value="bar">Bar</option><option value="cafe">Cafe</option><option value="car-wash">Car Wash</option><option value="casa">Casa</option><option value="casino">Casino</option><option value="farm">Farm</option><option value="germinada">Germinada</option><option value="hotel">Hotel</option><option value="house">House</option><option value="kitnet">Kitnet</option><option value="land">Land</option><option value="lodging">Lodging</option><option value="restaurant">Restaurant</option><option value="salao-comercial">Salão comercial</option><option value="spa">Spa</option><option value="store">Store</option><option value="villa">Villa</option>        <option value="" selected="">
-														Todos os tipos        </option>
+                               	 						<option value="">Tipo</option>
+                               	 						@foreach($property_types as $type) 
+                               	 							<option value="{{$type->id}}">{{$type->name}}</option>
+                               	 						@endforeach
 													</select>
 												</div><div class="col-md-4 col-sm-6 col-xs-12 form-group">
 													<select name="neighborhood" class="ere-property-neighborhood-ajax search-field form-control" title="Property Neighborhoods" data-selected="" data-default-value="">
-														<option value="east-atlanta">East Atlanta</option><option value="east-austin">East Austin</option><option value="echo-park">Echo Park</option><option value="hollywood">Hollywood</option><option value="jd-aricanduva">Jd Aricanduva</option><option value="north-austin">North Austin</option><option value="pacific-beach">Pacific Beach</option><option value="south-austin">South Austin</option><option value="the-castro">The Castro</option><option value="venice">Venice</option><option value="vila-antonieta">Vila Antonieta</option><option value="vila-formosa">Vila Formosa</option><option value="vila-rica">Vila Rica</option>        <option value="" selected="">
-														Bairro        </option>
+														<option value="">Bairro</option>
+														@foreach($neighborhoods as $neighborhood)
+															<option value="{{$neighborhood->name}}">{{$neighborhood->name}}</option>
+														@endforeach
 													</select>
 												</div><div class="col-md-4 col-sm-6 col-xs-12 form-group">
 													<select name="bedrooms" title="Quartos do Imóvel" class="search-field form-control" data-default-value="">
-														<option value="">
-														Quartos        </option>
-														<option value="1">
-														1                </option>
-														<option value="2">
-														2                </option>
-														<option value="3">
-														3                </option>
-														<option value="4">
-														4                </option>
-														<option value="5">
-														5                </option>
-														<option value="6">
-														6                </option>
-														<option value="7">
-														7                </option>
-														<option value="8">
-														8                </option>
-														<option value="9">
-														9                </option>
-														<option value="10">
-														10                </option>
+														<option value="">Quartos</option>
+														<option value="1">1</option>
+														<option value="2">2</option>
+														<option value="3">3</option>
+														<option value="4">4</option>
+														<option value="5">5</option>
+														<option value="6">6</option>
+														<option value="7">7</option>
+														<option value="8">8</option>
+														<option value="9">9</option>
+														<option value="10">10</option>
 													</select>
 												</div>    <div class="col-md-2 col-sm-3 col-xs-12 form-group">
 													<select name="min-price" title="Preço Min" class="search-field form-control" data-default-value="">
 														<option value="">
 														Preço Min            </option>
-														<option value="0">R$ 0                    </option>
-														<option value="100">R$ 100                    </option>
-														<option value="300">R$ 300                    </option>
-														<option value="500">R$ 500                    </option>
-														<option value="700">R$ 700                    </option>
-														<option value="900">R$ 900                    </option>
-														<option value="1100">R$ 1.100                    </option>
-														<option value="1300">R$ 1.300                    </option>
-														<option value="1500">R$ 1.500                    </option>
-														<option value="1700">R$ 1.700                    </option>
-														<option value="1900">R$ 1.900                    </option>
+														<option value="0">R$ 0</option>
+														<option value="100">R$ 100</option>
+														<option value="300">R$ 300</option>
+														<option value="500">R$ 500</option>
+														<option value="700">R$ 700</option>
+														<option value="900">R$ 900</option>
+														<option value="1100">R$ 1.100</option>
+														<option value="1300">R$ 1.300</option>
+														<option value="1500">R$ 1.500</option>
+														<option value="1700">R$ 1.700</option>
+														<option value="1900">R$ 1.900</option>
 													</select>
 												</div>
 												<div class="col-md-2 col-sm-3 col-xs-12 form-group">
 													<select name="max-price" title="Preço Max" class="search-field form-control" data-default-value="">
-														<option value="">
-														Preço Max            </option>
-														<option value="200">R$ 200                    </option>
-														<option value="400">R$ 400                    </option>
-														<option value="600">R$ 600                    </option>
-														<option value="800">R$ 800                    </option>
-														<option value="1000">R$ 1.000                    </option>
-														<option value="1200">R$ 1.200                    </option>
-														<option value="1400">R$ 1.400                    </option>
-														<option value="1600">R$ 1.600                    </option>
-														<option value="1800">R$ 1.800                    </option>
-														<option value="2000">R$ 2.000                    </option>
+														<option value="">Preço Max</option>
+														<option value="200">R$ 200</option>
+														<option value="400">R$ 400</option>
+														<option value="600">R$ 600</option>
+														<option value="800">R$ 800</option>
+														<option value="1000">R$ 1.000</option>
+														<option value="1200">R$ 1.200</option>
+														<option value="1400">R$ 1.400</option>
+														<option value="1600">R$ 1.600</option>
+														<option value="1800">R$ 1.800</option>
+														<option value="2000">R$ 2.000</option>
 													</select>
 												</div>
 												<div class="col-md-4 col-sm-6 col-xs-12 form-group">
 													<select name="garage" title="Property Garages" class="search-field form-control" data-default-value="">
-														<option value="">
-														Garagem        </option>
-														<option value="1">
-														1                </option>
-														<option value="2">
-														2                </option>
-														<option value="3">
-														3                </option>
-														<option value="4">
-														4                </option>
-														<option value="5">
-														5                </option>
-														<option value="6">
-														6                </option>
-														<option value="7">
-														7                </option>
-														<option value="8">
-														8                </option>
-														<option value="9">
-														9                </option>
-														<option value="10">
-														10                </option>
+														<option value="">Garagem</option>
+														<option value="1">1</option>
+														<option value="2">2</option>
+														<option value="3">3</option>
+														<option value="4">4</option>
+														<option value="5">5</option>
+														<option value="6">6</option>
+														<option value="7">7</option>
+														<option value="8">8</option>
+														<option value="9">9</option>
+														<option value="10">10</option>
 													</select>
-												</div>                            <div class="col-md-4 col-sm-6 col-xs-12 form-group submit-search-form pull-right">
-													<button type="button" class="ere-advanced-search-btn"><i class="fa fa-search"></i>
-													Buscar                                </button>
+												</div>
+												<div class="col-md-4 col-sm-6 col-xs-12 form-group submit-search-form pull-right">
+													<button type="button" class="ere-advanced-search-btn"><i class="fa fa-search"></i>Buscar</button>
 												</div>
 											</div>
 										</div>
 									</div>
 								</div>
 							</div>
-						</div>										</div>
+						</div>										
 					</div>
-				</div></div>
+				</div>
+			</div>
+		</div>
 
 
 		<div class=" container mt-5">
@@ -331,11 +313,10 @@
 
 											@if($team->logo)
 												<img style="max-width:100%" loading="lazy" class="custom-logo" src="{{asset($team->logo_src())}}" alt="{{ $team->name }}" >
-												<br>Estamos a 5 anos no mercado ajudando nossos clientes a encontrar a casa dos seus sonhos, ou a alugar suas casas com segurança.
 											@else
 												{{$team->name}}
-												<br>Estamos a 5 anos no mercado ajudando nossos clientes a encontrar a casa dos seus sonhos, ou a alugar suas casas com segurança.
 											@endif
+											<br> {{ $template->var_value_or_default('about_us_page_text')  }}
 										</p>
 									</div>
 								</div>
@@ -409,14 +390,17 @@
 
 
 
+	    <!-- BRANDING DA KIIM PARA CLIENTES QUE NAO SAO PRO -->
+	    @include('templates.nopro')
 
 
 
 
 
 
-
-
+		<script>
+			var url = '{{ $team->get_domain() }}';
+		</script>
         <script src="{{ asset('bootstrap/js/bootstrap.min.js') }}"></script>
         <script src="{{ asset('templates/'.$team->site_template->name.'/js/property-search.min.js?v='.$team->site_template->version)}}"></script>
 	</body><!-- body -->

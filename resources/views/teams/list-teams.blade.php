@@ -22,13 +22,14 @@
                     @endphp
                     <div class="row line-list-team mt-3 p-3">
                         <div class="col-md-4">
-                            @if($team->logo)
-                                <img src="{{asset($team->team->logo_src())}}" alt="">
+                            @if($team->team->logo)
+                                <img style="max-height: 80px; display:inline;" src="{{asset($team->team->logo_src())}}" alt="">
                             @else
                                 {{$team->team->name}}
                             @endif
                         </div>
                         <div class="col-md-4">
+                            <p>{{$team->team->name}}</p>
                             <a href="{{$domain}}" target="_blank">
                                 {{$domain}}
                             </a>
@@ -36,6 +37,7 @@
                         <div class="col-md-4">
                             <a class="pr-2" href="{{ $domain }}" target="_blank" title="Ver Site"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
                             <a class="pr-2" href="{{route('dashboard.properties.list', $team->team->id)}}" title="Listar Imóveis"><i class="fa-solid fa-list"></i></a>
+                            <a class="pr-2" href="{{route('dashboard.teams.edit', $team->team->id)}}" title="Editar Site"> <i class="fa-solid fa-pen-to-square"></i> </a>
                         </div>
                     </div>
 

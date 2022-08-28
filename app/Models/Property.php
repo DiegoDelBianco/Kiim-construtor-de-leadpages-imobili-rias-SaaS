@@ -62,6 +62,11 @@ class Property extends Model
         return $this->belongsTo(PropertyMedia::class);
     }
 
+    public function team()
+    {
+        return $this->belongsTo(Team::class);
+    }
+
     public function thumb_src(){
         if($this->thumb){
             return $this->thumb->path200(TRUE);
@@ -71,7 +76,9 @@ class Property extends Model
     }
 
     public function get_title(){
-        return $this->title;
+        $title = $this->title;
+        if ($title == NULL) $title = "sem nome";
+        return $title;
     }
 
     public function type(){
@@ -80,11 +87,30 @@ class Property extends Model
     }
 
     public function property_link($domain){
-        return $domain.'/imovel/'.$this->id.'/'.$this->get_title();
+        $title =  str_replace(" ", "_", $this->get_title());
+        return $domain.'/imovel/'.$this->id.'/'.$title;
     }
 
     public function confirm_team(Team $team){
 
         return $this->team_id == $team->id;
+    }
+
+
+    public function items()
+    {
+        return $this->belongsToMany(PropertyItem::class, 'properties_has_items');
+    }
+
+
+    public function leadpages()
+    {
+        return $this->belongsToMany(LeadpageTemplate::class, 'properties_has_leadpages');
+    }
+
+
+    public function list_leadpages()
+    {
+        return $this->hasMany(PropertiesHasLeadpages::class);
     }
 }

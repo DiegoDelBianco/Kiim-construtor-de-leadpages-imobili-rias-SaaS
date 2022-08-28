@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class Team extends Model
 {
@@ -110,6 +112,41 @@ class Team extends Model
                     str_replace('<sub>', $this->sub_domain, config('app.sub')):
                     $this->domain;
         return $domain;
+    }
+
+
+    /*
+    ** $type é o tipo de permissão minima para a função: 1( ver), 2(ver e editar), 3(ver, editar e adicionar), 4(ver, editar, adicionar e excluir)
+    ** $fun refencia sobre o que é a permissão:
+    **      -1 dados da equipe
+    **      -2 imóveis da equipe
+    **      -3 analytics (equipe e imóveis)
+    **      -4 membros da equipe
+    **      -5 contratos e faturamento da equipe
+    **      -6 parceiros da equipe
+    */
+    public function verify_permission($type, $fun){
+        $ligacao = UsersHasTeams::where(['user_id' => Auth::user()->id, 'team_id' => $this->id])->first();
+
+        //Caso seja o proprietario tem permissão total
+        if($ligacao->team_owener) return TRUE;
+
+        $permissao = $ligacao->permissions;
+
+        return (substr($permissao, $fun-1, 1) >=  $type);
+    }
+
+    public function get_neighborhoods(){
+
+        $neighborhoods = DB::select('SELECT DISTINCT(neighborhood) as name FROM properties WHERE team_id = :team_id AND neighborhood IS NOT NULL', ['team_id' => $this->id]);
+        
+        //$sql = " SELECT DISTINCT(pr.city) FROM property pr WHERE pr.city IS NOT null ";
+ 
+        return $neighborhoods;
+    }
+
+    public function is_pro(){
+        return false;
     }
 
 }

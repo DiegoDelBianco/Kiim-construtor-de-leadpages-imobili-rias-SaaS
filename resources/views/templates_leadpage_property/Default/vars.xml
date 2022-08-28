@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<variables>
+	<var>
+		<name>title</name>
+		<label>Titiulo</label>
+		<type>string</type>
+		<default>Lorem ipsum dolor sit amet.</default>
+	</var>
+	<var>
+		<name>cta</name>
+		<label>CTA - Texto do botão de whatsapp (ex: Chamar Agora)</label>
+		<type>string</type>
+		<default>Saiba Mais</default>
+	</var>
+</variables>

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Team;
+use Illuminate\Validation\Rule;
 use App\Models\TeamMedia;
 use App\Models\UsersHasTeams;
 use Illuminate\Support\Facades\Auth;
@@ -126,6 +127,7 @@ class TeamController extends Controller
         return redirect(route('dashboard.teams.list'));
     }
 
+
     /**
      * Display the specified resource.
      *
@@ -137,28 +139,57 @@ class TeamController extends Controller
         //
     }
 
+
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  App\Models\Team  $team
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Team  $team)
     {
-        return view('edit.list-team');
+        if(!$team->verify_permission(2, 1)) return false;
+
+        return view('teams.edit-team')->with(["team" => $team]);
     }
+
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  App\Models\Team  $team
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Team  $team)
     {
-        //
+        if(!$team->verify_permission(2, 1)) return false;
+
+
+        //Válida os dados do formulário
+        $request->validate([
+            'name' => ['required', 'string', 'min:0', 'max:255'],
+            'sub_domain' => ['required', 'string', 'min:0', 'max:255', Rule::unique('teams')->ignore($team->id)],
+            'domain' => ['string', 'nullable', 'min:0', 'max:255'],
+            'show_address' => ['required', 'boolean'],
+            'cep' => ['required', 'string', 'min:9', 'max:9'],
+            'street' => ['required', 'string', 'min:0', 'max:255'],
+            'neighborhood' => ['required', 'string', 'min:0', 'max:255'],
+            'city' => ['required', 'string', 'min:0', 'max:255'],
+            'state' => ['required', 'string', 'min:2', 'max:2'],
+            'creci' => ['required', 'string', 'min:6', 'max:10'],
+            'phone1' => ['string', 'nullable', 'min:0', 'max:20'],
+            'phone2' => ['string', 'nullable', 'nullable', 'min:0', 'max:20'],
+            'whatsapp' => ['string', 'nullable', 'min:0', 'max:255'],
+            'email' => ['string', 'nullable', 'min:0', 'max:255'],
+        ]);
+
+        //Cria o site
+        $saved = $team->update($request->all());
+
+        return redirect(route('dashboard.teams.list'));
     }
+
 
     /**
      * Remove the specified resource from storage.
@@ -182,6 +213,9 @@ class TeamController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function logo_store(Request $request, Team $team){
+        
+        if(!$team->verify_permission(2, 1)) return false;
+
         $request->validate([
          'image' => 'required|image|mimes:jpg,png,jpeg,gif,svg,webp|max:2048',
         ]);
@@ -204,5 +238,36 @@ class TeamController extends Controller
 
 
         return redirect(route('dashboard.properties.list', [$team->id]));
+    }
+
+
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  App\Models\Team  $team
+     * @return \Illuminate\Http\Response
+     */
+    public function scripts_store(Request $request, Team $team){
+        
+        if(!$team->verify_permission(2, 1)) return false;
+
+        //Válida os dados do formulário
+        $request->validate([
+            'f_pixel' => ['nullable', 'string', 'min:0', 'max:20'],
+            'g_analytics' => ['nullable', 'string', 'min:0', 'max:20'],
+            'g_adwords' => ['nullable', 'string', 'min:0', 'max:20'],
+            'g_tags' => ['nullable', 'string', 'min:0', 'max:20'],
+        ]);
+
+        $team->f_pixel = $request->f_pixel;
+        $team->g_analytics = $request->g_analytics;
+        $team->g_adwords = $request->g_adwords;
+        $team->g_tags = $request->g_tags;
+        $team->save();
+
+        return redirect(route('dashboard.properties.list', [$team->id]));
+
     }
 }

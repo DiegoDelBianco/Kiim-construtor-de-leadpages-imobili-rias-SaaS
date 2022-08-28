@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<variables>
+	<var>
+		<name>about_us_page_text</name>
+		<label>Texto do rodapé (Sobre nós)</label>
+		<type>longtext</type>
+		<default>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam sagittis in enim vitae ullamcorper. Nullam eleifend nibh et ligula consequat, et egestas erat bibendum. Fusce aliquam consequat neque eu aliquam. Donec et consequat velit. In hac habitasse platea dictumst. Phasellus ultrices nibh id urna auctor, euismod laoreet risus pretium. Curabitur nisi metus, hendrerit ac lacus et, cursus convallis sapien. Donec imperdiet efficitur erat ut dictum. Mauris lorem mauris, dictum eu egestas non, auctor congue urna. Suspendisse eget nisi eu risus pretium faucibus. Duis lacinia lorem dignissim neque vestibulum, vel lacinia mauris fermentum. Donec sit amet convallis nisl, vel ultricies massa. Etiam orci sem, vehicula id urna rhoncus, faucibus pharetra enim. Vivamus tincidunt ullamcorper quam nec iaculis. Ut molestie libero hendrerit neque pharetra, a maximus arcu facilisis. Suspendisse potenti. Maecenas euismod tincidunt placerat. Mauris sed commodo enim.</default>
+	</var>
+	<var>
+		<name>n_property_page</name>
+		<label>Quantidade de imóveis por página</label>
+		<type>integer</type>
+		<default>30</default>
+	</var>
+</variables>
