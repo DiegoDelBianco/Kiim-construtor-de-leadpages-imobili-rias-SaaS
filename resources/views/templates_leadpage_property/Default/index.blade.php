@@ -101,9 +101,23 @@
 			@endif
 			<hr>
 			<p id="desc">
-				{{ $property->street }}, {{ $property->neighborhood }} <br> {{ $property->city }}
+				{{  }}
 
+				@if($property->street != "")
+				{{ $property->street }},  <br>
+				@endif
+
+				@if($property->neighborhood != "")
+				{{ $property->neighborhood }},
+				@endif
+
+				@if($property->city != "")
+				{{ $property->city }}
+				@endif
 			</p>
+			@if($template->var_value_or_default('desc') != "")
+            <p>{{ $template->var_value_or_default('desc')  }}</p>
+            @endif
 
 			<div id="detals">
 				<span class="detal">
@@ -129,6 +143,9 @@
 				<a href="#" class="btn btn-secondary"><i class="fa-solid fa-arrow-up-right-from-square"></i> Mais Imóveis</a>
 			</div-->
 		</div>
+
+	    <!-- MENSAGEM PARA ACEITAR COOKIES -->
+	    @include('templates.cookies')
 
 		<!--div class="container-fluid" id="container-principal" style="background-image:url({{asset($property->thumb->path1200x675(1))}})">
 			<div class="container text-center" id="wrap-info">

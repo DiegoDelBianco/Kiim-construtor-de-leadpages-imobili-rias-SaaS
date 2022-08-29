@@ -7,6 +7,12 @@
 		<default>Lorem ipsum dolor sit amet.</default>
 	</var>
 	<var>
+		<name>desc</name>
+		<label>Descrição curta</label>
+		<type>longtext</type>
+		<default></default>
+	</var>
+	<var>
 		<name>cta</name>
 		<label>CTA - Texto do botão de whatsapp (ex: Chamar Agora)</label>
 		<type>string</type>

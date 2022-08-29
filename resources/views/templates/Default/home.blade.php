@@ -392,6 +392,9 @@
 	    <!-- BRANDING DA KIIM PARA CLIENTES QUE NAO SAO PRO -->
 	    @include('templates.nopro')
 
+	    <!-- MENSAGEM PARA ACEITAR COOKIES -->
+	    @include('templates.cookies')
+
 
 
 
