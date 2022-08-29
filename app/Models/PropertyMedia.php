@@ -145,7 +145,7 @@ class PropertyMedia extends Model
     }
 
     public function storeImages($file, $cutImage = TRUE){
-
+        phpinfo();
         $tmp = $file['tmp_name'];
         $sourceProperties = getimagesize($tmp);
         $uploadImageType = $sourceProperties[2];
