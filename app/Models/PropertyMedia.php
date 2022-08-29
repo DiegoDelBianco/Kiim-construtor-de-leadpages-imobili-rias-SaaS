@@ -180,7 +180,7 @@ class PropertyMedia extends Model
         }
 
         //Salva a original
-        imagewebp($gdInstance, $this->pathOriginal());
+        \imagewebp($gdInstance, $this->pathOriginal());
 
         //Gera a 400x225
         $image400x225 = $this->prepare_image(
@@ -190,7 +190,7 @@ class PropertyMedia extends Model
             $sourceImageWidth, 
             $sourceImageHeight, 
             $cutImage);
-        imagewebp($image400x225, $this->path400x225());
+        \imagewebp($image400x225, $this->path400x225());
 
         //Gera a 1200x675
         $image800 = $this->prepare_image(
@@ -200,7 +200,7 @@ class PropertyMedia extends Model
             $sourceImageWidth, 
             $sourceImageHeight, 
             $cutImage);
-        imagewebp($image800, $this->path1200x675());
+        \imagewebp($image800, $this->path1200x675());
 
         return TRUE;
     }
