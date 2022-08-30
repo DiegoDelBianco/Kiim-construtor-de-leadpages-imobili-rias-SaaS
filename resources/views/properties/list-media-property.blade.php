@@ -45,7 +45,6 @@
                                 <button 
                                     type="button" 
                                     {{$disable}} 
-                                    onclick='$("#deleteModal form").attr("action", "{{route("dashboard.properties.media.destroy", [$team->id, $property->id, $media->id])}}"); $("#deleteModal img").attr("src", "{{asset($media->path200(TRUE))}}")' 
                                     class="btn btn-danger" 
                                     data-toggle="modal" 
                                     data-target="#deleteModal">
