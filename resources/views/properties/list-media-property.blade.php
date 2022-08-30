@@ -1,5 +1,4 @@
 <x-app-layout>
-    <style></style>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             {{ $team->name }} - {{ $property->get_title() }}
@@ -7,7 +6,6 @@
                 class="btn btn-primary">Listar Imóveis</a> 
         </h2>
     </x-slot>
-    <style></style>
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
@@ -39,7 +37,6 @@
                         <div class="col-md-2 item-media p-2 m-2">
                             <img src="{{asset($media->path200(TRUE))}}" class="mb-2" alt="">
 
-    <style></style>
                             <form method="POST" enctype="multipart/form-data" id="upload-image" action="{{ route('dashboard.properties.media.thumb', [$team->id, $property->id, $media->id]) }}">
                                 @csrf
                                 <button href="#" 
