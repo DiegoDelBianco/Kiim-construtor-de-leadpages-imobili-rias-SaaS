@@ -88,20 +88,19 @@
 			@if($property->sale)
 
 			<div class="price" id="price-sale">
-				<span class="price-type">Venda: </span><span class="pricers">R$ </span><span> {{ $property->sale_price }} </span>
+				<span class="price-type">Venda: </span><span class="pricers">R$ </span><span> {{ number_format($property->sale_price, 2, ',', '.') }} </span>
 			</div>
 
 			@endif
 			@if($property->rent)
 
 			<div class="price" id="price-sale">
-				<span class="price-type">Aluguel: </span><span class="pricers">R$ </span><span class="priceval"> {{ $property->rent_price }} </span> <span class="pricefre">/ Mês</span>
+				<span class="price-type">Aluguel: </span><span class="pricers">R$ </span><span class="priceval"> {{ number_format($property->rent_price, 2, ',', '.') }} </span> <span class="pricefre">/ Mês</span>
 			</div>
 
 			@endif
 			<hr>
 			<p id="desc">
-				{{  }}
 
 				@if($property->street != "")
 				{{ $property->street }},  <br>
@@ -143,6 +142,10 @@
 				<a href="#" class="btn btn-secondary"><i class="fa-solid fa-arrow-up-right-from-square"></i> Mais Imóveis</a>
 			</div-->
 		</div>
+
+
+		<div id="footer"> {{ $team->name }} © 2022  | Creci: <b> {{$team->creci}} </b> </div>
+
 
 	    <!-- MENSAGEM PARA ACEITAR COOKIES -->
 	    @include('templates.cookies')

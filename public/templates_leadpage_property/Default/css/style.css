@@ -182,3 +182,16 @@ hr{
 	background-color: #BF0227;
 	border-color:#97001E;
 }
+#footer{
+	width: 100vw;
+	height: 20px;
+	background-color: #0a0a0a;
+	position:fixed;
+	bottom: 0px;
+	left: 0px;
+	line-height: 20px;
+	font-size: 12px;
+	text-align: center;
+	color: #fafafa;
+	opacity: 0.6
+}

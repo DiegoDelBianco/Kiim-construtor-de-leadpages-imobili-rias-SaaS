@@ -236,11 +236,11 @@
 								</h2>
 								<div class="property-price">
 									@if($property->sale)
-										<span>Venda R$ {{ $property->sale_price }}</span><br />
+										<span>Venda R$ {{ number_format($property->sale_price, 2, ',', '.') }}</span><br />
 									@endif
 
 									@if($property->rent)
-										<span>Aluguel R$ {{ $property->rent_price }}<span class="property-price-postfix"> / Mês</span></span>
+										<span>Aluguel R$ {{ number_format($property->rent_price, 2, ',', '.') }}<span class="property-price-postfix"> / Mês</span></span>
 									@else
 										<span></span><br />
 									@endif

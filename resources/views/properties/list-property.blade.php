@@ -64,10 +64,10 @@
                             @endif
                             <p>
                             @if($property->rent)
-                            <b>Valor de Aluguel:</b> R$ {{$property->rent_price}} <br />
+                            <b>Valor de Aluguel:</b> R$ {{number_format($property->rent_price, 2, ',', '.')}} <br />
                             @endif
                             @if($property->sale)
-                            <b>Valor de Venda:</b> R$ {{$property->sale_price}}
+                            <b>Valor de Venda:</b> R$ {{number_format($property->sale_price, 2, ',', '.')}}
                             @endif
                             </p>
                             <p>

@@ -152,7 +152,7 @@ class PropertyController extends Controller
             }
         }
 
-        return redirect(route('dashboard.properties.list', $team->id));
+        return redirect(route('dashboard.properties.media.list', [$team->id, $property->id]));
     }
 
     /**

@@ -141,7 +141,7 @@
 										@if($property->rent)
 											<div class="property-info-block-inline">
 												<div>
-													<span class="property-price">R$ {{$property->rent_price}}<span class="property-price-postfix"> / Mês</span></span>
+													<span class="property-price">R$ {{number_format($property->rent_price, 2, ',', '.')}}<span class="property-price-postfix"> / Mês</span></span>
 													<div class="property-status"><span class="" style="background-color: #32b5f8">Aluguel</span></div>
 												</div>
 
@@ -156,7 +156,7 @@
 										@if($property->sale)
 											<div class="property-info-block-inline">
 												<div>
-													<span class="property-price">R$ {{$property->sale_price}}<span class="property-price-postfix"></span></span>
+													<span class="property-price">R$ {{number_format($property->sale_price, 2, ',', '.')}}<span class="property-price-postfix"></span></span>
 													<div class="property-status"><span class="" style="background-color: #32b5f8">Venda</span></div>
 												</div>
 
@@ -416,7 +416,7 @@
 												<li>
 													<strong>Preço do Aluguel</strong>
 													<span class="ere-property-price">
-														R$ {{$property->rent_price}}                                     
+														R$ {{number_format($property->rent_price, 2, ',', '.')}}                                     
 														<span class="property-price-postfix"> / Mês</span>
 													</span>
 												</li>
@@ -425,7 +425,7 @@
 												<li>
 													<strong>Preço para Venda</strong>
 													<span class="ere-property-price">
-														R$ {{$property->sale_price}}                                     
+														R$ {{number_format($property->sale_price, 2, ',', '.')}}                                     
 														<span class="property-price-postfix"> / Mês</span>
 													</span>
 												</li>
