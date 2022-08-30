@@ -31,9 +31,10 @@
                     <div class="row list-medias">
                         @foreach($medias as $media)
                         @php
-                            $thumbClass = ($media->id == $property->thumb->id ? "secondary" : "primary");
-                            
-                            $disable = ($media->id == $property->thumb->id ? "disabled" : "");
+                            $thumbid = isset($property->thumb->id)?$property->thumb->id:false;
+                            $thumbClass = ($media->id == $thumbid ? "secondary" : "primary");
+
+                            $disable = ($media->id == $thumbid ? "disabled" : "");
                         @endphp
                         <div class="col-md-2 item-media p-2 m-2">
                             <img src="{{asset($media->path200(TRUE))}}" class="mb-2" alt="">
