@@ -115,7 +115,7 @@
 				@endif
 			</p>
 			@if($template->var_value_or_default('desc') != "")
-            <p>{{ $template->var_value_or_default('desc')  }}</p>
+            <p id="desc2">{{ $template->var_value_or_default('desc')  }}</p>
             @endif
 
 			<div id="detals">
