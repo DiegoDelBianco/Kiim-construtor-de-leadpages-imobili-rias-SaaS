@@ -120,13 +120,13 @@
 
 			<div id="detals">
 				<span class="detal">
-					{{ $property->bathrooms+0 }} <i class="fa-solid fa-bed"></i>
+					{{ $property->bedrooms+0 }} <i class="fa-solid fa-bed"></i>
 				</span>
 				<span class="detal">
 					{{ $property->bathrooms+0 }} <i class="fa-solid fa-bath"></i>
 				</span>
 				<span class="detal">
-					{{ $property->bathrooms+0 }} m<sup>2</sup> <i class="fa-solid fa-arrows-up-down-left-right"></i>
+					{{ $property->m2+0 }} m<sup>2</sup> <i class="fa-solid fa-arrows-up-down-left-right"></i>
 				</span>
 			</div>
 
