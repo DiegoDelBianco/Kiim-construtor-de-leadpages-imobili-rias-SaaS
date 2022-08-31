@@ -192,9 +192,9 @@ hr{
 	border-color:#97001E;
 }
 .cta .btn:active{
-	background-color: #BF0227;
-	border-color:#97001E;
-	
+	background-color: #BF0227 !important;
+	border-color:#97001E !important;
+
 }
 #footer{
 	width: 100vw;
