@@ -191,6 +191,11 @@ hr{
 	background-color: #BF0227;
 	border-color:#97001E;
 }
+.cta .btn:active{
+	background-color: #BF0227;
+	border-color:#97001E;
+	
+}
 #footer{
 	width: 100vw;
 	height: 20px;
