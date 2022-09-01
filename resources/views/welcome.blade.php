@@ -115,7 +115,7 @@
             <div class="container">
                 <div class="row session-principal">
                     <div class="col-md-12 pb-3">
-                        <h1>Crie seu site Imbiliário <br> <b>Grátis</b> Agora</h1>
+                        <h1>Crie seu site Imobiliário <br> <b>Grátis</b> Agora</h1>
                     </div>
                     <div class="col-md-12 pt-2">
                         <a href="{{ route('register') }}" class="btn btn-primary"> Criar conta Grátis </a>
