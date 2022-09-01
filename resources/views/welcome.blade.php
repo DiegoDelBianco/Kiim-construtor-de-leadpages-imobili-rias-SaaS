@@ -71,6 +71,7 @@
             .card{
                 margin-left: auto;
                 margin-right: auto;
+                border: 0px;
             }
             @media (min-width:600px){
                 .card.card-f{
@@ -80,12 +81,16 @@
                     margin-left: 0px;
                 }
             }
+            .shadow{
+                box-shadow: 3px 3px 10px #777 !important;
+            }
+    
         </style>
 
     </head>
     <body class="antialiased body-site">
 
-        <div class="container-fluid nav-login">
+        <div class="container-fluid nav-login shadow">
             <div class="container">
                 <div class="row">
                     <div class="p-2 col-md-12 text-right">
@@ -111,7 +116,7 @@
             </div>
         </header>
 
-        <section class="container-fluid section-princpal pt-5 pb-5">
+        <section class="container-fluid section-princpal pt-5 pb-5 shadow">
             <div class="container">
                 <div class="row session-principal">
                     <div class="col-md-12 pb-3">
@@ -125,7 +130,7 @@
             </div>
         </section>  
 
-        <section class="container p-3 section-planos">
+        <section class="container p-3 section-planos mt-4">
             <div class="row">
                 <div class="col-md-12 text-center">
                     <h2>Planos</h2>
@@ -133,7 +138,7 @@
             </div>
             <div class="row">
                 <div class="col-md-6 mb-2"> 
-                    <div class="card card-f" style="width: 22rem;">
+                    <div class="card card-f shadow" style="width: 22rem;">
                       <ul class="list-group list-group-flush">
                         <li class="list-group-item title">Grátis</li>
                         <li class="list-group-item ok">Até 2 sites</li>
@@ -147,8 +152,8 @@
                       </ul>
                     </div>
                 </div>
-                <div class="col-md-6 mb-2"> 
-                    <div class="card card-s" style="width: 22rem;">
+                <div class="col-md-6 mb-2 "> 
+                    <div class="card card-s shadow" style="width: 22rem; ">
                       <ul class="list-group list-group-flush">
                         <li class="list-group-item title">1 Premium</li>
                         <li class="list-group-item ok">Até <b>3</b> sites</li>
@@ -171,7 +176,7 @@
                 </div>
             </div>
         </section>
-        <footer class="container-fluid footer pt-3 pb-2 mt-4">
+        <footer class="container-fluid footer pt-3 pb-2 mt-4 shadow">
             <section class="container">
                 <div class="row">
                     <div class="col-md-12">
