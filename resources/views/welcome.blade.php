@@ -49,7 +49,7 @@
                 font-size: 20px;
             }
             .section-princpal{
-                background: url({{asset('images/principal/back-session-1.jpg')}});
+                background: url({{asset('images/principal/back-session-1.webp')}});
                 background-size: cover;
                 background-position: center;
                 background-attachment: fixed;
@@ -132,7 +132,7 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-6"> 
+                <div class="col-md-6 mb-2"> 
                     <div class="card card-f" style="width: 22rem;">
                       <ul class="list-group list-group-flush">
                         <li class="list-group-item title">Gratis</li>
@@ -147,7 +147,7 @@
                       </ul>
                     </div>
                 </div>
-                <div class="col-md-6"> 
+                <div class="col-md-6 mb-2"> 
                     <div class="card card-s" style="width: 22rem;">
                       <ul class="list-group list-group-flush">
                         <li class="list-group-item title">1 Premium</li>
