@@ -135,13 +135,13 @@
                 <div class="col-md-6 mb-2"> 
                     <div class="card card-f" style="width: 22rem;">
                       <ul class="list-group list-group-flush">
-                        <li class="list-group-item title">Gratis</li>
+                        <li class="list-group-item title">Grátis</li>
                         <li class="list-group-item ok">Até 2 sites</li>
                         <li class="list-group-item ok">Imóveis imitados</li>
                         <li class="list-group-item ok">Até 1 Lead Page por Imóvel</li>
                         <li class="list-group-item ok">Colaboradores ilimitados para cada site</li>
                         <li class="list-group-item ok">Compartilhamento de imóveis com outros sites (Sites de parceiros e corretores)</li>
-                        <li class="list-group-item ok">Farramenta para criar posts dos imóveis</li>
+                        <li class="list-group-item ok">Ferramenta para criar posts dos imóveis</li>
                         <li class="list-group-item no">Site sem nossa marca fixada na tela</li>
 
                       </ul>
@@ -154,9 +154,9 @@
                         <li class="list-group-item ok">Até <b>3</b> sites</li>
                         <li class="list-group-item ok">Imóveis imitados</li>
                         <li class="list-group-item ok">Lead Page <b>Imilitadas</b> por Imóvel</li>
-                        <li class="list-group-item ok">Colaboradores ilimitados para cada site</li>
+                        <li class="list-group-item ok">Colaboradores Inimitadas para cada site</li>
                         <li class="list-group-item ok">Compartilhamento de imóveis com outros sites (Sites de parceiros e corretores)</li>
-                        <li class="list-group-item ok">Farramenta para criar posts dos imóveis</li>
+                        <li class="list-group-item ok">Ferramenta para criar posts dos imóveis</li>
                         <li class="list-group-item ok">Site sem nossa marca fixada na tela</li>
                       </ul>
                     </div>
