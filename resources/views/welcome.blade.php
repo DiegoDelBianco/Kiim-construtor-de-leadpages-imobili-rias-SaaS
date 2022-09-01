@@ -118,7 +118,7 @@
                         <h1>Crie seu site Imobiliário <br> <b>Grátis</b> Agora</h1>
                     </div>
                     <div class="col-md-12 pt-2">
-                        <a href="{{ route('register') }}" class="btn btn-primary"> Criar conta Grátis </a>
+                        <a href="{{ route('register') }}" class="btn btn-primary"> Criar site <b>grátis</b> Agora </a>
                         <p>Para corretores <br> E imobiliárias</p>
                     </div>
                 </div>
