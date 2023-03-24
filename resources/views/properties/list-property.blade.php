@@ -37,6 +37,12 @@
                             @endif
                         </div>
                         <div class="col-md-4">
+
+                            @if($team->pro)
+                            <p>Pacote: Kiim Pro</p>
+                            @else
+                            <p>Pacote: Kiim Grátis <a href="#" class="btn btn-success"> Vire Kiim Pro </a> </p>
+                            @endif
                             <p><a href="{{ route('dashboard.teams.template.show', [$team->id, $team->site_template_id]) }}" class="btn btn-primary" >Configurar Tema</a></p>
                             <p>
                                 <button type="button" class="btn btn-primary mt-1" data-toggle="modal" data-target="#scriptsModal">
@@ -76,6 +82,7 @@
                             </p> 
                         </div>
                         <div class="col-md-4">
+
                             <p>
                                 <a class="pr-2" href="{{$property->property_link($domain)}}" target="_blank" title="Ver Site"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
                                 <a class="pr-2" href="{{route('dashboard.properties.media.list', [$team->id, $property->id])}}" title="Imagens"><i class="fa-solid fa-image"></i></a>
@@ -129,124 +136,13 @@
 
 
 
-
-    <!-- Modal -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Enviar Logotipo</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-
-             <form method="POST" enctype="multipart/form-data" id="upload-image" action="{{ route('dashboard.teams.logo.store', [$team->id]) }}">
-                    @csrf
-                  <div class="modal-body">
-                        <input type="file" name="image" placeholder="Choose image" id="image">
-                  </div>
-                  <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                    <button type="submit" class="btn btn-primary">Enviar</button>
-                  </div>
-            </form>
-        </div>
-      </div>
-    </div>
-
-    <!-- Modal -->
-    <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Excluir Imóvel</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-
-             <form method="POST" enctype="multipart/form-data" id="upload-image" action="">
-                    @csrf
-                  <div class="modal-body text-center">
-                    <h2>Você tem certeza de que deseja excluir esse imóvel</h2>
-                    <img style="display:inline" src="" alt="">
-                    <p class="title"></p>
-                  </div>
-                  <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                    <button type="submit" class="btn btn-danger">Excluir</button>
-                  </div>
-            </form>
-        </div>
-      </div>
-    </div>
-
-    <!-- Modal -->
-    <div class="modal fade" id="addLeadModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Nova LeadPage Imóvel</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-
-             <form method="POST" enctype="multipart/form-data" id="upload-image" action="">
-                    @csrf
-                  <div class="modal-body text-center">
-                    <h2>Você deseja adicionar uma LeadPage a esse imóvel</h2>
-                    <img style="display:inline" src="" alt="">
-                    <title>Nova LeadPage Para o imóvel <span class="title"></span></title>
-                    <select name="leadpage_template_id" id="leadpage_template_id">
-                        <option value="1">Default</option>
-                    </select>
-                  </div>
-                  <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                    <button type="submit" class="btn btn-primary">Adicionar</button>
-                  </div>
-            </form>
-        </div>
-      </div>
-    </div>
+    @include('properties.modal-add-leadpage')
+    @include('properties.modal-add-logo')
+    @include('properties.modal-delete-property')
+    @include('properties.modal-scripts')
 
 
 
-    <!-- Modal -->
-    <div class="modal fade" id="scriptsModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Scripts Google e Facebook</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
 
-             <form method="POST" enctype="multipart/form-data" id="upload-image" action="{{ route('dashboard.teams.scripts.store', $team->id) }}">
-                    @csrf
-                  <div class="modal-body text-center">
-                    <h2>Configure os scripts desse site.</h2>
-                    @php
-                        $disabled = $team->is_pro()? "" : "disabled";
-                    @endphp
-                    <label for="f_pixel">Pixel do facebook</label><br>
-                    <input type="text" name="f_pixel" id="f_pixel" value="{{ old('f_pixel', $team->f_pixel) }}"><br />
-                    <label for="g_analytics">ID o Analytics</label><br>
-                    <input type="text" name="g_analytics" id="g_analytics" value="{{ old('g_analytics', $team->g_analytics) }}"><br />
-                    <label for="g_adwords">Adwords <b>(PRO Version)</b></label><br>
-                    <input {{ $disabled }} type="text" name="g_adwords" id="g_adwords" value="{{ old('g_adwords', $team->g_adwords) }}"><br />
-                    <label for="g_tags">Google TagManeger <b>(PRO Version)</b></label><br>
-                    <input {{ $disabled }} type="text" name="g_tags" id="g_tags" value="{{ old('g_tags', $team->g_tags) }}"><br />
-                  </div>
-                  <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                    <button type="submit" class="btn btn-primary">Adicionar</button>
-                  </div>
-            </form>
-        </div>
-      </div>
-    </div>
+
 </x-app-layout>

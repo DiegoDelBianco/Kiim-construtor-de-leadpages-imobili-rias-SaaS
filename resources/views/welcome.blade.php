@@ -25,66 +25,9 @@
         <script src="{{ asset('js/principal/jquery-3.6.0.min.js') }}"></script>
         <link rel="stylesheet" href="{{ asset('bootstrap/css/bootstrap.min.css') }}">
         <style>
-            body {
-                font-family: 'Nunito', sans-serif;
-                background-color: #f7fafc;
-            }
-            .nav-login{
-                background-color: #444;
-            }
-            .nav-login a{
-                color: #fff;
-                text-decoration: none;
-            }
-            .nav-login a:hover{
-                color: #ddd;
-            }
-            .session-principal h1{
-                display: initial;
-                line-height: 59px;
-                text-shadow: 1px 1px 1px #333;
-                background-color: rgba(255, 255, 255, 0.6)
-            }
-            .session-principal .btn{
-                font-size: 20px;
-            }
-            .section-princpal{
-                background: url({{asset('images/principal/back-session-1.webp')}});
-                background-size: cover;
-                background-position: center;
-                background-attachment: fixed;
-            }
-            .footer{
-                background-color: #444;   
-            }
-            .footer a, .footer p, .footer ul, .footer li{
-                color: #fff;
-            }
-            .card li.title{
-                font-weight:bold;
-                background-color: #ccc;
-            }
-            .card li.no{
-                background: #ffc3c3;
-                text-decoration: line-through;
-            }
-            .card{
-                margin-left: auto;
-                margin-right: auto;
-                border: 0px;
-            }
-            @media (min-width:600px){
-                .card.card-f{
-                    margin-right: 0px;
-                }
-                .card.card-s{
-                    margin-left: 0px;
-                }
-            }
-            .shadow{
-                box-shadow: 3px 3px 10px #777 !important;
-            }
-    
+        .section-princpal{
+            background: url({{asset('images/principal/back-session-1.webp')}});
+        }
         </style>
 
     </head>
@@ -140,14 +83,16 @@
                 <div class="col-md-6 mb-2"> 
                     <div class="card card-f shadow" style="width: 22rem;">
                       <ul class="list-group list-group-flush">
-                        <li class="list-group-item title">Grátis</li>
-                        <li class="list-group-item ok">Até 2 sites</li>
-                        <li class="list-group-item ok">Imóveis imitados</li>
-                        <li class="list-group-item ok">Até 1 Lead Page por Imóvel</li>
+                        <li class="list-group-item title">Kiim Grátis</li>
+                        <!--li class="list-group-item ok">Até 2 sites</li-->
+                        <li class="list-group-item limit">Até 15 imóveis</li>
+                        <li class="list-group-item limit">Até 1 Lead Page por Imóvel</li>
                         <li class="list-group-item ok">Colaboradores ilimitados para cada site</li>
                         <li class="list-group-item ok">Compartilhamento de imóveis com outros sites (Sites de parceiros e corretores)</li>
                         <li class="list-group-item ok">Ferramenta para criar posts dos imóveis</li>
-                        <li class="list-group-item no">Site sem nossa marca fixada na tela</li>
+                        <li class="list-group-item no">Remove nossa marca d'água do site.</li>
+                        <li class="list-group-item no">Remove nossa marca d'água das imagens para postar</li>
+                        <li class="list-group-item price">Grátis</li>
 
                       </ul>
                     </div>
@@ -155,14 +100,16 @@
                 <div class="col-md-6 mb-2 "> 
                     <div class="card card-s shadow" style="width: 22rem; ">
                       <ul class="list-group list-group-flush">
-                        <li class="list-group-item title">1 Premium</li>
-                        <li class="list-group-item ok">Até <b>3</b> sites</li>
-                        <li class="list-group-item ok">Imóveis imitados</li>
-                        <li class="list-group-item ok">Lead Page <b>Imilitadas</b> por Imóvel</li>
-                        <li class="list-group-item ok">Colaboradores Inimitadas para cada site</li>
+                        <li class="list-group-item title">Kiim PRO</li>
+                        <!--li class="list-group-item ok">Até <b>3</b> sites</li-->
+                        <li class="list-group-item ok">Imóveis <b>imitados</b></li>
+                        <li class="list-group-item ok">Lead Page <b>Ilimitadas</b> por Imóvel</li>
+                        <li class="list-group-item ok">Colaboradores Ilimitados para cada site</li>
                         <li class="list-group-item ok">Compartilhamento de imóveis com outros sites (Sites de parceiros e corretores)</li>
                         <li class="list-group-item ok">Ferramenta para criar posts dos imóveis</li>
                         <li class="list-group-item ok">Site sem nossa marca fixada na tela</li>
+                        <li class="list-group-item ok">Remove nossa marca d'água das imagens para postar</li>
+                        <li class="list-group-item price">R$ 49,90 Mensal</li>
                       </ul>
                     </div>
                 </div>

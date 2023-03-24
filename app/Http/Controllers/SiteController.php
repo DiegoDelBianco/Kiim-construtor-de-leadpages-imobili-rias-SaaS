@@ -6,6 +6,7 @@ use App\Models\Property;
 use App\Models\PropertyType;
 use App\Models\SiteTemplate;
 use App\Models\PropertiesHasLeadpages;
+use Illuminate\Support\Facades\Auth;
 
 use Illuminate\Http\Request;
 
@@ -14,6 +15,11 @@ class SiteController extends Controller
 
     public function home(){
         $urlParts = explode('.', $_SERVER['HTTP_HOST']);
+        //return view('welcome');
+
+        if(count($urlParts)==1) return view('welcome');
+        //echo "TESTESEEE";
+        //var_dump(Auth::user());
         $team = Team::where('sub_domain',$urlParts['0'])->first();
         $template = $team->site_template;
 

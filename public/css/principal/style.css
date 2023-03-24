@@ -33,6 +33,74 @@
 
 
 /** SITE LAYOUT **/
+.body-site body {
+    font-family: 'Nunito', sans-serif;
+    background-color: #f7fafc;
+}
 .body-site #top-logo{
 	max-width: 350px;
+}
+.body-site .nav-login{
+    background-color: #444;
+}
+.body-site .nav-login a{
+    color: #fff;
+    text-decoration: none;
+}
+.body-site .nav-login a:hover{
+    color: #ddd;
+}
+.body-site .session-principal h1{
+    display: initial;
+    line-height: 59px;
+    text-shadow: 1px 1px 1px #333;
+    background-color: rgba(255, 255, 255, 0.6)
+}
+.body-site .session-principal .btn{
+    font-size: 20px;
+}
+.body-site .section-princpal{
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+.body-site .footer{
+    background-color: #444;   
+}
+.body-site .footer a, .footer p, .footer ul, .footer li{
+    color: #fff;
+}
+.body-site .card li.title{
+    font-weight:bold;
+    background-color: #ccc;
+}
+.body-site .card li.no{
+    background: #ffc3c3;
+    text-decoration: line-through;
+}
+.body-site .card li.limit{
+    background: #fbffc3;
+}
+.body-site .card li.price{
+	background: #c4ffc3;
+    font-weight: bold;
+    color: #228f1e;
+    font-size: 20px;
+    text-align: center;
+}
+.body-site .card{
+    margin-left: auto;
+    margin-right: auto;
+    border: 0px;
+}
+@media (min-width:600px){
+    .body-site .card.card-f{
+        margin-right: 0px;
+    }
+    .body-site .card.card-s{
+        margin-left: 0px;
+    }
+}
+.body-site .shadow{
+    box-shadow: 3px 3px 10px #777 !important;
 }

@@ -19,7 +19,7 @@ use App\Http\Controllers\TemplateController;
 */
 
 //site principal
-Route::group(['domain' => Config::get('app.domain')], function () {
+Route::group(['domain' => Config::get('app.domain_p')], function () {
     
     Route::get('/', function () {
         return view('welcome');

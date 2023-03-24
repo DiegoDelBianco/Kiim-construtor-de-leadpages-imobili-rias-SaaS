@@ -29,15 +29,20 @@
                             @endif
                         </div>
                         <div class="col-md-4">
-                            <p>{{$team->team->name}}</p>
-                            <a href="{{$domain}}" target="_blank">
-                                {{$domain}}
+                            <p>{{$team->team->name}}<a class="pr-2" href="{{route('dashboard.teams.edit', $team->team->id)}}" title="Editar Site"> <i class="fa-solid fa-pen-to-square"></i> </a></p>
+                            <a href="{{route('dashboard.properties.list', $team->team->id)}}" target="_blank" class="btn btn-success">
+                                <i class="fa-solid fa-list"></i> Configurar 
+                            </a>
+                            <a href="{{$domain}}" target="_blank" class="btn btn-primary">
+                                <i class="fa-solid fa-arrow-up-right-from-square"></i> Acessar 
                             </a>
                         </div>
                         <div class="col-md-4">
-                            <a class="pr-2" href="{{ $domain }}" target="_blank" title="Ver Site"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
-                            <a class="pr-2" href="{{route('dashboard.properties.list', $team->team->id)}}" title="Listar Imóveis"><i class="fa-solid fa-list"></i></a>
-                            <a class="pr-2" href="{{route('dashboard.teams.edit', $team->team->id)}}" title="Editar Site"> <i class="fa-solid fa-pen-to-square"></i> </a>
+                            @if($team->pro)
+                            <p>Pacote: Kiim Pro</p>
+                            @else
+                            <p>Pacote: Kiim Grátis <a href="#" class="btn btn-success"> Vire Kiim Pro </a> </p>
+                            @endif
                         </div>
                     </div>
 
